@@ -1,0 +1,25 @@
+{
+  "name": "radial-progress-indicator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Tim Brayshaw <tim@brayshaw.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write"
+  },
+  "devDependencies": {
+    "@storybook/addon-backgrounds": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/react": "^3.4.10",
+    "babel-core": "^6.26.3",
+    "flow-bin": "^0.80.0",
+    "prettier": "1.14.2",
+    "storybook-addon-jsx": "^5.4.0"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
