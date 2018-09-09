@@ -1,11 +1,13 @@
 {
   "name": "radial-progress-indicator",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": "Tim Brayshaw <tim@brayshaw.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
+    "clean-dist": "rm -rf ./dist",
+    "transpile": "yarn run clean-dist && NODE_ENV=production babel ./src --out-dir ./dist",
     "storybook-dev": "start-storybook -p 9001 -c .storybook",
     "storybook-deploy": "storybook-to-ghpages",
     "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write"
@@ -15,13 +17,19 @@
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/react": "^3.4.10",
     "@storybook/storybook-deployer": "^2.3.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "flow-bin": "^0.80.0",
     "prettier": "1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "storybook-addon-jsx": "^5.4.0"
   },
-  "dependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+  "peerDependencies": {
+    "react": ">=16.4",
+    "react-dom": ">=16.4"
   }
 }
