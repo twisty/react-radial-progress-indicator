@@ -14,4 +14,4 @@ You may find this component useful if you want to display progress where â€œyouâ
 
 ## Demo
 
-* Have a look at [this storybook](https://github.com/twisty/radial-progress-indicator).
+* Have a look at [this storybook](https://twisty.github.io/radial-progress-indicator/).
