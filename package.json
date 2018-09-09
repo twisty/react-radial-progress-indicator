@@ -6,13 +6,15 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook-dev": "start-storybook -p 9001 -c .storybook",
+    "storybook-deploy": "storybook-to-ghpages",
     "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^3.4.10",
     "@storybook/addon-knobs": "^3.4.10",
     "@storybook/react": "^3.4.10",
+    "@storybook/storybook-deployer": "^2.3.0",
     "babel-core": "^6.26.3",
     "flow-bin": "^0.80.0",
     "prettier": "1.14.2",
