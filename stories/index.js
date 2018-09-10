@@ -1,90 +1,82 @@
 import React from 'react';
 import { storiesOf, setAddon } from '@storybook/react';
-import {
-  withKnobs,
-  text,
-  boolean,
-  number,
-  color,
-} from '@storybook/addon-knobs/react';
-import backgrounds from '@storybook/addon-backgrounds';
-
 import JSXAddon from 'storybook-addon-jsx';
-
-import RadialProgressIndicator from '../src/renderers/canvas';
+import RadialProgressIndicator from '../src';
 
 setAddon(JSXAddon);
 
-const myBackgrounds = backgrounds([
-  { name: 'white', value: '#fff', default: true },
-  { name: 'blue', value: '#ccf' },
-  { name: 'black', value: '#000' },
-]);
+const stories = storiesOf('RadialProgressIndicator', module);
 
-let canvasRendererStories = storiesOf('RadialProgressIndicator', module);
-canvasRendererStories.addDecorator(withKnobs);
-canvasRendererStories.addDecorator(myBackgrounds);
-
-canvasRendererStories.addWithJSX('The kitchen sink', () => {
-  const coloursGroup = 'Colour options';
-  const displayGroup = 'Display options';
-  const progressGroup = 'Progress display options';
-  return (
+stories
+  .addWithJSX('At 3/10', () => (
     <RadialProgressIndicator
+      startStep={3}
+      step={3}
+      steps={10}
       width={200}
       height={200}
-      steps={number(
-        'steps',
-        10,
-        {
-          range: true,
-          min: 5,
-          max: 12,
-          step: 1,
-        },
-        progressGroup
-      )}
-      proportion={number(
-        'proportion',
-        0.55,
-        {
-          range: true,
-          min: 0,
-          max: 1,
-          step: 1 / 500,
-        },
-        progressGroup
-      )}
-      showIntermediateProgress={boolean(
-        'showIntermediateProgress',
-        true,
-        progressGroup
-      )}
-      showStepMarkers={boolean('showStepMarkers', true, displayGroup)}
-      ringBgColour={color('ringBgColour', '#ccc', coloursGroup)}
-      ringIntermediateColour={color(
-        'ringIntermediateColour',
-        '#aaa',
-        coloursGroup
-      )}
-      ringFgColour={color('ringFgColour', '#000', coloursGroup)}
-      backgroundColour={color('backgroundColour', '#fff', coloursGroup)}
-      backgroundTransparent={boolean(
-        'backgroundTransparent',
-        true,
-        coloursGroup
-      )}
-      ringThickness={number(
-        'ringThickness',
-        0.2,
-        {
-          range: true,
-          min: 0,
-          max: 0.5,
-          step: 1 / 100,
-        },
-        displayGroup
-      )}
     />
-  );
-});
+  ))
+  .addWithJSX('To 3/10, with colours', () => (
+    <RadialProgressIndicator
+      step={3}
+      steps={10}
+      width={200}
+      height={200}
+      ringBgColour="#EDCA8A"
+      ringFgColour="#674509"
+      ringIntermediateColour="#AA8239"
+      backgroundColour="#FFE0A9"
+      backgroundTransparent={false}
+      showIntermediateProgress={true}
+    />
+  ))
+  .addWithJSX('From 3/10 to 5/10', () => (
+    <RadialProgressIndicator
+      startStep={3}
+      step={5}
+      steps={10}
+      width={200}
+      height={200}
+      showIntermediateProgress={true}
+    />
+  ))
+  .addWithJSX('From 5/10 to 3/10', () => (
+    <RadialProgressIndicator
+      startStep={5}
+      step={3}
+      steps={10}
+      width={200}
+      height={200}
+      showIntermediateProgress={true}
+    />
+  ))
+  .addWithJSX('100 steps, no step markers', () => (
+    <RadialProgressIndicator
+      steps={100}
+      step={100}
+      width={200}
+      height={200}
+      showStepMarkers={false}
+    />
+  ))
+  .addWithJSX('5 steps, fast duration', () => (
+    <RadialProgressIndicator
+      steps={5}
+      step={5}
+      width={200}
+      height={200}
+      duration={1000}
+      showIntermediateProgress={true}
+    />
+  ))
+  .addWithJSX('5 steps, slow duration', () => (
+    <RadialProgressIndicator
+      steps={5}
+      step={5}
+      width={200}
+      height={200}
+      duration={10000}
+      showIntermediateProgress={true}
+    />
+  ));
