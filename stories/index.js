@@ -1,11 +1,20 @@
 import React from 'react';
 import { storiesOf, setAddon } from '@storybook/react';
+import backgrounds from '@storybook/addon-backgrounds';
 import JSXAddon from 'storybook-addon-jsx';
 import RadialProgressIndicator from '../src';
 
 setAddon(JSXAddon);
 
+const myBackgrounds = backgrounds([
+  { name: 'white', value: '#fff', default: true },
+  { name: 'blue', value: '#ccf' },
+  { name: 'black', value: '#000' },
+]);
+
 const stories = storiesOf('RadialProgressIndicator', module);
+
+stories.addDecorator(myBackgrounds);
 
 stories
   .addWithJSX('At 3/10', () => (
@@ -99,4 +108,29 @@ stories
       duration={10000}
       showIntermediateProgress={true}
     />
+  ))
+  .addWithJSX('Custom text', () => (
+    <div style={{ fontFamily: 'sans-serif' }}>
+      <RadialProgressIndicator
+        steps={5}
+        step={5}
+        width={200}
+        height={200}
+        showIntermediateProgress={true}
+        text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
+      />
+    </div>
+  ))
+  .addWithJSX('Small, with custom text', () => (
+    <div style={{ fontWeight: 'bold', fontFamily: 'sans-serif' }}>
+      <RadialProgressIndicator
+        steps={6}
+        step={6}
+        width={48}
+        height={48}
+        ringThickness={0.4}
+        showIntermediateProgress={true}
+        text={(steps, proportion) => `${Math.floor(steps * proportion)}`}
+      />
+    </div>
   ));

@@ -20,6 +20,7 @@ type Props = {
   backgroundTransparent: boolean,
   showIntermediateProgress: boolean,
   showStepMarkers: boolean,
+  text: (steps: number, proportion: number) => React.Node,
 };
 
 type State = {
@@ -43,6 +44,10 @@ class RadialProgress extends React.Component<Props, State> {
     backgroundTransparent: true,
     showIntermediateProgress: false,
     showStepMarkers: true,
+    text: (steps: number, proportion: number) => {
+      const step = Math.floor(steps * proportion);
+      return `${step}/${steps}`;
+    },
   };
 
   state = {
@@ -134,7 +139,6 @@ class RadialProgress extends React.Component<Props, State> {
       );
     };
     const label = (steps, proportion) => {
-      const step = Math.floor(steps * proportion);
       return (
         <div
           className="label"
@@ -149,7 +153,7 @@ class RadialProgress extends React.Component<Props, State> {
             color: this.props.ringFgColour,
           }}
         >
-          {step}/{steps}
+          {this.props.text(steps, proportion)}
         </div>
       );
     };
