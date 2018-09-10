@@ -1,11 +1,25 @@
 {
-  "name": "radial-progress-indicator",
+  "name": "react-radial-progress-indicator",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "Tim Brayshaw <tim@brayshaw.com>",
   "license": "MIT",
-  "private": true,
+  "homepage": "https://github.com/twisty/react-radial-progress-indicator#readme",
+  "keywords": [
+    "react",
+    "react-component",
+    "progress-bar",
+    "radial-progress"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/twisty/react-radial-progress-indicator.git"
+  },
+  "files": [
+    "/dist"
+  ],
   "scripts": {
+    "prepublishOnly": "yarn transpile",
     "clean-dist": "rm -rf ./dist",
     "transpile": "yarn run clean-dist && NODE_ENV=production babel ./src --out-dir ./dist",
     "storybook-dev": "start-storybook -p 9001 -c .storybook",

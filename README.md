@@ -1,8 +1,6 @@
-# radial-progress-indicator
+# react-radial-progress-indicator
 
 A React component that displays a customisable circular progress gauge.
-
-**🚧 👩‍💻 Proceed with caution, work in progress 👨‍💻 🚧**
 
 This component displays a circular progress gauge, useful for displaying progress on a completeable action, like:
 
@@ -20,12 +18,38 @@ This component displays a circular progress gauge, useful for displaying progres
 
 ## Demo
 
-* Have a look at [this storybook](https://twisty.github.io/radial-progress-indicator/).
+* Have a look at [this storybook](https://twisty.github.io/react-radial-progress-indicator/).
 
 ## Install
 
-**todo**
+Install with yarn…
+
+```
+yarn add react-radial-progress-indicator
+```
+
+…or npm:
+
+```
+npm install react-radial-progress-indicator
+```
 
 ## Usage
 
-**todo**
+```jsx
+import React, { Component } from 'react'
+import RadialProgressIndicator from 'react-radial-progress-indicator';
+
+class MyComponent extends Component {
+  render() {
+    return (
+      <RadialProgressIndicator
+        width={100}
+        height={100}
+        steps={10}
+        step={3}
+      />
+    )
+  }
+}
+```
