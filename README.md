@@ -21,3 +21,11 @@ This component displays a circular progress gauge, useful for displaying progres
 ## Demo
 
 * Have a look at [this storybook](https://twisty.github.io/radial-progress-indicator/).
+
+## Install
+
+**todo**
+
+## Usage
+
+**todo**
