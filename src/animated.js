@@ -12,6 +12,7 @@ type Props = {
   step: number,
   startStep: number,
   duration: number,
+  ringThickness: number,
   ringBgColour: fillStyle,
   ringFgColour: fillStyle,
   ringIntermediateColour: fillStyle,
@@ -34,6 +35,7 @@ class RadialProgress extends React.Component<Props, State> {
     step: 10,
     startStep: 0,
     duration: 5000,
+    ringThickness: 0.2,
     ringBgColour: '#ccc',
     ringFgColour: '#3c763d',
     ringIntermediateColour: '#aaa',
@@ -166,6 +168,7 @@ class RadialProgress extends React.Component<Props, State> {
           showIntermediateProgress={this.props.showIntermediateProgress}
           showStepMarkers={this.props.showStepMarkers}
           steps={this.props.steps}
+          ringThickness={this.props.ringThickness}
           ringBgColour={this.props.ringBgColour}
           ringFgColour={this.props.ringFgColour}
           ringIntermediateColour={this.props.ringIntermediateColour}

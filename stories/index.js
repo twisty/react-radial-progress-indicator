@@ -17,6 +17,26 @@ stories
       height={200}
     />
   ))
+  .addWithJSX('At 3/10, thin ring', () => (
+    <RadialProgressIndicator
+      startStep={3}
+      step={3}
+      steps={10}
+      width={200}
+      height={200}
+      ringThickness={0.05}
+    />
+  ))
+  .addWithJSX('At 3/10, thick ring', () => (
+    <RadialProgressIndicator
+      startStep={3}
+      step={3}
+      steps={10}
+      width={200}
+      height={200}
+      ringThickness={0.3}
+    />
+  ))
   .addWithJSX('To 3/10, with colours', () => (
     <RadialProgressIndicator
       step={3}
