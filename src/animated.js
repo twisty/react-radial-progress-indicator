@@ -128,13 +128,14 @@ class RadialProgress extends React.Component<Props, State> {
           <li>proportion: {proportion}</li>
           <li>props.duration: {this.props.duration}</li>
           <li>getDuration(): {this.getDuration()}</li>
-          <li>Step: {Math.floor(step)}</li>
         </ul>
       );
     };
-    const label = (step, total) => {
+    const label = (steps, proportion) => {
+      const step = Math.floor(steps * proportion);
       return (
         <div
+          className="label"
           style={{
             position: 'absolute',
             top: 0,
@@ -142,9 +143,11 @@ class RadialProgress extends React.Component<Props, State> {
             height: this.props.height,
             lineHeight: `${this.props.height}px`,
             textAlign: 'center',
+            fontSize: `${this.props.height / 4}px`,
+            color: this.props.ringFgColour,
           }}
         >
-          {Math.floor(step)}/{this.props.steps}
+          {step}/{steps}
         </div>
       );
     };
@@ -153,7 +156,6 @@ class RadialProgress extends React.Component<Props, State> {
     const proportion =
       startProportion +
       (endProportion - startProportion) * this.getProportion();
-    const step = this.props.steps * proportion;
     return (
       <div style={{ position: 'relative' }}>
         <CanvasRenderer
@@ -170,7 +172,7 @@ class RadialProgress extends React.Component<Props, State> {
           backgroundColour={this.props.backgroundColour}
           backgroundTransparent={this.props.backgroundTransparent}
         />
-        {label(Math.floor(step), this.props.steps)}
+        {label(this.props.steps, proportion)}
         {/*debug(proportion)*/}
       </div>
     );
