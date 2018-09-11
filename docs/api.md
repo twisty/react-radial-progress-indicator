@@ -1,4 +1,4 @@
-# Foo!
+# RadialProgressIndicator
 
 ## Props
 | Name                     | Type                                                 | Default                                                                                                                         | Required | Description                                                                                          |
