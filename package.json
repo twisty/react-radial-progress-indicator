@@ -1,6 +1,6 @@
 {
   "name": "react-radial-progress-indicator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "author": "Tim Brayshaw <tim@brayshaw.com>",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "radial-progress"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/twisty/react-radial-progress-indicator.git"
+    "type": "git",
+    "url": "https://github.com/twisty/react-radial-progress-indicator.git"
   },
   "files": [
     "/dist"
@@ -24,7 +24,8 @@
     "transpile": "yarn run clean-dist && NODE_ENV=production babel ./src --out-dir ./dist",
     "storybook-dev": "start-storybook -p 9001 -c .storybook",
     "storybook-deploy": "storybook-to-ghpages",
-    "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write"
+    "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write",
+    "api-docs": "documentation build src/animated.js --f md --shallow --github > docs/api.md"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^3.4.10",
@@ -36,6 +37,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "documentation": "^8.1.2",
     "flow-bin": "^0.80.0",
     "prettier": "1.14.2",
     "react": "^16.4.2",
