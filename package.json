@@ -25,7 +25,7 @@
     "storybook-dev": "start-storybook -p 9001 -c .storybook",
     "storybook-deploy": "storybook-to-ghpages",
     "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write",
-    "api-docs": "documentation build src/animated.js --f md --shallow > docs/api.md"
+    "generate-docs": "./generate-docs.sh"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^3.4.10",
@@ -37,10 +37,11 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "documentation": "^8.1.2",
     "flow-bin": "^0.80.0",
     "prettier": "1.14.2",
     "react": "^16.4.2",
+    "react-docgen": "^2.21.0",
+    "react-docs-markdown": "^0.7.0",
     "react-dom": "^16.4.2",
     "storybook-addon-jsx": "^5.4.0"
   },
