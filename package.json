@@ -40,7 +40,7 @@
     "flow-bin": "^0.80.0",
     "prettier": "1.14.2",
     "react": "^16.4.2",
-    "react-docgen": "^2.21.0",
+    "react-docgen": "^3.0.0-rc.1",
     "react-docs-markdown": "^0.7.0",
     "react-dom": "^16.4.2",
     "storybook-addon-jsx": "^5.4.0"
