@@ -6,20 +6,35 @@ import { CanvasRenderer } from './index';
 type fillStyle = string | CanvasGradient | CanvasPattern;
 
 type Props = {
+  /** The width of the canvas element, in pixels */
   width: number,
+  /** The height of the canvas element, in pixels */
   height: number,
+  /** The total number of steps to complete the ring */
   steps: number,
+  /** The current step */
   step: number,
+  /** Start animating from this step, to the current step */
   startStep: number,
+  /** The time in milliseconds to complete an animation of all steps in the ring */
   duration: number,
+  /** The thickness of the progress ring, expressed as a proportion (0.0 to 1.0) of the radius of the ring */
   ringThickness: number,
+  /** The colour of the uncompleted steps of the ring */
   ringBgColour: fillStyle,
+  /** The colour of the completed steps of the ring */
   ringFgColour: fillStyle,
+  /** The colour of the 'intermediate' progress indicator that travels around the ring */
   ringIntermediateColour: fillStyle,
+  /** The colour for the centre of the ring */
   backgroundColour: fillStyle,
+  /** Whether to display the centre of the ring as transparent */
   backgroundTransparent: boolean,
+  /** Whether to display the 'intermediate' progress bar */
   showIntermediateProgress: boolean,
-  showStepMarkers: boolean,
+  /** Whether to segment the steps by displaying a gap between them */
+  segmented: boolean,
+  /** A function that returns the content that is displayed in the centre of the ring */
   text: (steps: number, proportion: number) => React.Node,
 };
 
@@ -43,7 +58,7 @@ class RadialProgress extends React.Component<Props, State> {
     backgroundColour: '#dff0d8',
     backgroundTransparent: true,
     showIntermediateProgress: false,
-    showStepMarkers: true,
+    segmented: true,
     text: (steps: number, proportion: number) => {
       const step = Math.floor(steps * proportion);
       return `${step}/${steps}`;
@@ -170,7 +185,7 @@ class RadialProgress extends React.Component<Props, State> {
           height={this.props.height}
           proportion={proportion}
           showIntermediateProgress={this.props.showIntermediateProgress}
-          showStepMarkers={this.props.showStepMarkers}
+          segmented={this.props.segmented}
           steps={this.props.steps}
           ringThickness={this.props.ringThickness}
           ringBgColour={this.props.ringBgColour}

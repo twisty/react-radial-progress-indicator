@@ -58,7 +58,7 @@ canvasRendererStories.addWithJSX('The kitchen sink', () => {
         true,
         progressGroup
       )}
-      showStepMarkers={boolean('showStepMarkers', true, displayGroup)}
+      segmented={boolean('segmented', true, displayGroup)}
       ringBgColour={color('ringBgColour', '#ccc', coloursGroup)}
       ringIntermediateColour={color(
         'ringIntermediateColour',

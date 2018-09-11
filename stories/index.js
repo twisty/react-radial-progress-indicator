@@ -80,13 +80,13 @@ stories
       showIntermediateProgress={true}
     />
   ))
-  .addWithJSX('100 steps, no step markers', () => (
+  .addWithJSX('100 steps, no segment gaps', () => (
     <RadialProgressIndicator
       steps={100}
       step={100}
       width={200}
       height={200}
-      showStepMarkers={false}
+      segmented={false}
     />
   ))
   .addWithJSX('5 steps, fast duration', () => (

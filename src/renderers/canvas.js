@@ -16,7 +16,7 @@ type Props = {
   ringIntermediateColour: fillStyle,
   ringThickness: number,
   showIntermediateProgress: boolean,
-  showStepMarkers: boolean,
+  segmented: boolean,
   steps: number,
   width: number,
 };
@@ -32,7 +32,7 @@ class CanvasRenderer extends React.Component<Props> {
     ringIntermediateColour: '#aaa',
     ringThickness: 0.2,
     showIntermediateProgress: false,
-    showStepMarkers: true,
+    segmented: true,
     steps: 360,
     width: 100,
   };
@@ -95,7 +95,7 @@ class CanvasRenderer extends React.Component<Props> {
     this.ctx.fillStyle = this.props.ringFgColour;
     this.ctx.fill();
 
-    if (this.props.showStepMarkers) {
+    if (this.props.segmented) {
       if (this.props.backgroundTransparent) {
         this.ctx.globalCompositeOperation = 'destination-out';
       }
