@@ -25,7 +25,7 @@
     "storybook-dev": "start-storybook -p 9001 -c .storybook",
     "storybook-deploy": "storybook-to-ghpages",
     "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write",
-    "api-docs": "documentation build src/animated.js --f md --shallow --github > docs/api.md"
+    "api-docs": "documentation build src/animated.js --f md --shallow > docs/api.md"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^3.4.10",

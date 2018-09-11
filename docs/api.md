@@ -20,91 +20,61 @@
 
 ## width
 
-[src/animated.js:10-10][16]
-
 The width of the canvas element, in pixels
 
 ## height
-
-[src/animated.js:12-12][17]
 
 The height of the canvas element, in pixels
 
 ## steps
 
-[src/animated.js:14-14][18]
-
 The total number of steps to complete the ring
 
 ## step
-
-[src/animated.js:16-16][19]
 
 The current step
 
 ## startStep
 
-[src/animated.js:18-18][20]
-
 Start animating from this step, to the current step
 
 ## duration
-
-[src/animated.js:20-20][21]
 
 The time in milliseconds to complete an animation of all steps in the ring
 
 ## ringThickness
 
-[src/animated.js:22-22][22]
-
 The thickness of the progress ring, expressed as a proportion (0.0 to 1.0) of the radius of the ring
 
 ## ringBgColour
-
-[src/animated.js:24-24][23]
 
 The colour of the uncompleted steps of the ring
 
 ## ringFgColour
 
-[src/animated.js:26-26][24]
-
 The colour of the completed steps of the ring
 
 ## ringIntermediateColour
-
-[src/animated.js:28-28][25]
 
 The colour of the 'intermediate' progress indicator that travels around the ring
 
 ## backgroundColour
 
-[src/animated.js:30-30][26]
-
 The colour for the centre of the ring
 
 ## backgroundTransparent
-
-[src/animated.js:32-32][27]
 
 Whether to display the centre of the ring as transparent
 
 ## showIntermediateProgress
 
-[src/animated.js:34-34][28]
-
 Whether to display the 'intermediate' progress bar
 
 ## segmented
 
-[src/animated.js:36-36][29]
-
 Whether to segment the steps by displaying a gap between them
 
 ## text
-
-[src/animated.js:38-38][30]
 
 A function that returns the content that is displayed in the centre of the ring
 
@@ -137,33 +107,3 @@ A function that returns the content that is displayed in the centre of the ring
 [14]: #segmented
 
 [15]: #text
-
-[16]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L10-L10 "Source code on GitHub"
-
-[17]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L12-L12 "Source code on GitHub"
-
-[18]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L14-L14 "Source code on GitHub"
-
-[19]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L16-L16 "Source code on GitHub"
-
-[20]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L18-L18 "Source code on GitHub"
-
-[21]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L20-L20 "Source code on GitHub"
-
-[22]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L22-L22 "Source code on GitHub"
-
-[23]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L24-L24 "Source code on GitHub"
-
-[24]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L26-L26 "Source code on GitHub"
-
-[25]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L28-L28 "Source code on GitHub"
-
-[26]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L30-L30 "Source code on GitHub"
-
-[27]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L32-L32 "Source code on GitHub"
-
-[28]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L34-L34 "Source code on GitHub"
-
-[29]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L36-L36 "Source code on GitHub"
-
-[30]: https://github.com/twisty/radial-progress-indicator/blob/c224ae9125c98f0f84a9cc4b2bed31a5eac9b8d9/src/animated.js#L38-L38 "Source code on GitHub"
