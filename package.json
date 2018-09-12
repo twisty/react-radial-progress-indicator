@@ -1,6 +1,6 @@
 {
   "name": "react-radial-progress-indicator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "author": "Tim Brayshaw <tim@brayshaw.com>",
   "license": "MIT",
