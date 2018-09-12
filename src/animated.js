@@ -156,10 +156,11 @@ class RadialProgress extends React.Component<Props, State> {
     const label = (steps, proportion) => {
       return (
         <div
-          className="label"
+          className="RadialProgressIndicator__label"
           style={{
             position: 'absolute',
             top: 0,
+            left: 0,
             width: this.props.width,
             height: this.props.height,
             lineHeight: `${this.props.height}px`,
@@ -178,7 +179,7 @@ class RadialProgress extends React.Component<Props, State> {
       startProportion +
       (endProportion - startProportion) * this.getProportion();
     return (
-      <div style={{ position: 'relative' }}>
+      <div className="RadialProgressIndicator" style={{ position: 'relative' }}>
         <CanvasRenderer
           ref={ref => (this.graphic = ref)}
           width={this.props.width}
