@@ -6,8 +6,8 @@ const docsToMarkdown = require('react-docs-markdown');
 
 const docList = [
   {
-    name: 'RadialProgressIndicator',
-    file: './src/animated.js',
+    name: 'RadialProgress',
+    file: './src/index.js',
     out: './docs/api.md',
   },
 ];

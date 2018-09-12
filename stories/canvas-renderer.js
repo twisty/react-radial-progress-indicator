@@ -9,7 +9,7 @@ import {
 } from '@storybook/addon-knobs/react';
 import backgrounds from '@storybook/addon-backgrounds';
 import JSXAddon from 'storybook-addon-jsx';
-import { CanvasRenderer } from '../src/';
+import { CanvasRenderer } from '../src/renderers/';
 
 setAddon(JSXAddon);
 

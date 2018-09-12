@@ -21,7 +21,7 @@ type Props = {
   width: number,
 };
 
-class CanvasRenderer extends React.Component<Props> {
+export class CanvasRenderer extends React.Component<Props> {
   static defaultProps = {
     backgroundColour: '#fff',
     backgroundTransparent: true,
@@ -135,5 +135,3 @@ class CanvasRenderer extends React.Component<Props> {
     );
   }
 }
-
-export default CanvasRenderer;

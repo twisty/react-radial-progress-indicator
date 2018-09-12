@@ -38,12 +38,12 @@ npm install react-radial-progress-indicator
 
 ```jsx
 import React, { Component } from 'react'
-import RadialProgressIndicator from 'react-radial-progress-indicator';
+import { RadialProgress } from 'react-radial-progress-indicator';
 
 class MyComponent extends Component {
   render() {
     return (
-      <RadialProgressIndicator
+      <RadialProgress
         width={100}
         height={100}
         steps={10}

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf, setAddon } from '@storybook/react';
 import backgrounds from '@storybook/addon-backgrounds';
 import JSXAddon from 'storybook-addon-jsx';
-import RadialProgressIndicator from '../src';
+import { RadialProgress } from '../src';
 
 setAddon(JSXAddon);
 
@@ -12,13 +12,13 @@ const myBackgrounds = backgrounds([
   { name: 'black', value: '#000' },
 ]);
 
-const stories = storiesOf('RadialProgressIndicator', module);
+const stories = storiesOf('RadialProgress', module);
 
 stories.addDecorator(myBackgrounds);
 
 stories
   .addWithJSX('At 3/10', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       startStep={3}
       step={3}
       steps={10}
@@ -27,7 +27,7 @@ stories
     />
   ))
   .addWithJSX('At 3/10, thin ring', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       startStep={3}
       step={3}
       steps={10}
@@ -37,7 +37,7 @@ stories
     />
   ))
   .addWithJSX('At 3/10, thick ring', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       startStep={3}
       step={3}
       steps={10}
@@ -47,7 +47,7 @@ stories
     />
   ))
   .addWithJSX('To 3/10, with colours', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       step={3}
       steps={10}
       width={200}
@@ -61,7 +61,7 @@ stories
     />
   ))
   .addWithJSX('From 3/10 to 5/10', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       startStep={3}
       step={5}
       steps={10}
@@ -71,7 +71,7 @@ stories
     />
   ))
   .addWithJSX('From 5/10 to 3/10', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       startStep={5}
       step={3}
       steps={10}
@@ -81,7 +81,7 @@ stories
     />
   ))
   .addWithJSX('100 steps, no segment gaps', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       steps={100}
       step={100}
       width={200}
@@ -90,7 +90,7 @@ stories
     />
   ))
   .addWithJSX('5 steps, fast duration', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       steps={5}
       step={5}
       width={200}
@@ -100,7 +100,7 @@ stories
     />
   ))
   .addWithJSX('5 steps, slow duration', () => (
-    <RadialProgressIndicator
+    <RadialProgress
       steps={5}
       step={5}
       width={200}
@@ -111,7 +111,7 @@ stories
   ))
   .addWithJSX('Custom text', () => (
     <div style={{ fontFamily: 'sans-serif' }}>
-      <RadialProgressIndicator
+      <RadialProgress
         steps={5}
         step={5}
         width={200}
@@ -123,7 +123,7 @@ stories
   ))
   .addWithJSX('Small, with custom text', () => (
     <div style={{ fontWeight: 'bold', fontFamily: 'sans-serif' }}>
-      <RadialProgressIndicator
+      <RadialProgress
         steps={6}
         step={6}
         width={48}
