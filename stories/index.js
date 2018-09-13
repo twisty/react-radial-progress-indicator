@@ -16,6 +16,12 @@ const stories = storiesOf('RadialProgress', module);
 
 stories.addDecorator(myBackgrounds);
 
+stories.addDecorator(story => (
+  <div style={{ textAlign: 'center', fontFamily: 'Helvetica, sans-serif' }}>
+    {story()}
+  </div>
+));
+
 stories
   .addWithJSX('At 3/10', () => (
     <RadialProgress
@@ -27,14 +33,16 @@ stories
     />
   ))
   .addWithJSX('At 3/10, thin ring', () => (
-    <RadialProgress
-      startStep={3}
-      step={3}
-      steps={10}
-      width={200}
-      height={200}
-      ringThickness={0.05}
-    />
+    <div style={{ fontWeight: 100 }}>
+      <RadialProgress
+        startStep={3}
+        step={3}
+        steps={10}
+        width={200}
+        height={200}
+        ringThickness={0.05}
+      />
+    </div>
   ))
   .addWithJSX('At 3/10, thick ring', () => (
     <RadialProgress
@@ -110,19 +118,17 @@ stories
     />
   ))
   .addWithJSX('Custom text', () => (
-    <div style={{ fontFamily: 'sans-serif' }}>
-      <RadialProgress
-        steps={5}
-        step={5}
-        width={200}
-        height={200}
-        showIntermediateProgress={true}
-        text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
-      />
-    </div>
+    <RadialProgress
+      steps={5}
+      step={5}
+      width={200}
+      height={200}
+      showIntermediateProgress={true}
+      text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
+    />
   ))
   .addWithJSX('Small, with custom text', () => (
-    <div style={{ fontWeight: 'bold', fontFamily: 'sans-serif' }}>
+    <div style={{ fontWeight: 'bold' }}>
       <RadialProgress
         steps={6}
         step={6}
@@ -133,4 +139,57 @@ stories
         text={(steps, proportion) => `${Math.floor(steps * proportion)}`}
       />
     </div>
-  ));
+  ))
+  .addWithJSX('Sized to fit container', () => {
+    const progress = (
+      <RadialProgress step={10} steps={10} width="100%" height="100%" />
+    );
+    return (
+      <div>
+        <div
+          style={{
+            float: 'left',
+            backgroundColor: '#eee',
+            margin: 5,
+            width: 50,
+            height: 200,
+          }}
+        >
+          {progress}
+        </div>
+        <div
+          style={{
+            float: 'left',
+            backgroundColor: '#eee',
+            margin: 5,
+            width: 100,
+            height: 200,
+          }}
+        >
+          {progress}
+        </div>
+        <div
+          style={{
+            float: 'left',
+            backgroundColor: '#eee',
+            margin: 5,
+            width: 200,
+            height: 200,
+          }}
+        >
+          {progress}
+        </div>
+        <div
+          style={{
+            float: 'left',
+            backgroundColor: '#eee',
+            margin: 5,
+            width: 200,
+            height: 100,
+          }}
+        >
+          {progress}
+        </div>
+      </div>
+    );
+  });
