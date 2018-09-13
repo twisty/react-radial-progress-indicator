@@ -6,10 +6,17 @@
   "license": "MIT",
   "homepage": "https://github.com/twisty/react-radial-progress-indicator#readme",
   "keywords": [
+    "canvas",
+    "progress-bar",
+    "progress-circle",
+    "progress-indicator",
+    "radial-gauge",
+    "radial-indicator",
+    "radial-progress",
+    "radial-progress",
     "react",
     "react-component",
-    "progress-bar",
-    "radial-progress"
+    "ui-widget"
   ],
   "repository": {
     "type": "git",
