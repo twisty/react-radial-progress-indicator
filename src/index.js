@@ -6,10 +6,10 @@ import { CanvasRenderer } from './renderers/';
 type fillStyle = string | CanvasGradient | CanvasPattern;
 
 type Props = {
-  /** The width of the canvas element, in pixels */
-  width: number,
-  /** The height of the canvas element, in pixels */
-  height: number,
+  /** The CSS width of the element */
+  width: number | string,
+  /** The CSS height of the element */
+  height: number | string,
   /** The total number of steps to complete the ring */
   steps: number,
   /** The current step */
@@ -154,24 +154,22 @@ export class RadialProgress extends React.Component<Props, State> {
       );
     };
     const label = (steps, proportion) => {
-      return (
-        <div
-          className="RadialProgressIndicator__label"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: this.props.width,
-            height: this.props.height,
-            lineHeight: `${this.props.height}px`,
-            textAlign: 'center',
-            fontSize: `${this.props.height / 4}px`,
-            color: this.props.ringFgColour,
-          }}
-        >
-          {this.props.text(steps, proportion)}
-        </div>
-      );
+      if (this.graphic && this.graphic.canvas) {
+        const rect = this.graphic.canvas.getBoundingClientRect();
+        const diameter = Math.min(rect.height, rect.width);
+        const style = {
+          position: 'absolute',
+          textAlign: 'center',
+          color: this.props.ringFgColour,
+          fontSize: `${diameter / 4}px`,
+        };
+        return (
+          <div className="RadialProgressIndicator__label" style={style}>
+            {this.props.text(steps, proportion)}
+          </div>
+        );
+      }
+      return null;
     };
     const startProportion = this.props.startStep / this.props.steps;
     const endProportion = this.props.step / this.props.steps;
@@ -179,11 +177,19 @@ export class RadialProgress extends React.Component<Props, State> {
       startProportion +
       (endProportion - startProportion) * this.getProportion();
     return (
-      <div className="RadialProgressIndicator" style={{ position: 'relative' }}>
+      <div
+        className="RadialProgressIndicator"
+        style={{
+          position: 'relative',
+          width: this.props.width,
+          height: this.props.height,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <CanvasRenderer
           ref={ref => (this.graphic = ref)}
-          width={this.props.width}
-          height={this.props.height}
           proportion={proportion}
           showIntermediateProgress={this.props.showIntermediateProgress}
           segmented={this.props.segmented}

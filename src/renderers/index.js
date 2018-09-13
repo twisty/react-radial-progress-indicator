@@ -9,7 +9,6 @@ type fillStyle = string | CanvasGradient | CanvasPattern;
 type Props = {
   backgroundColour: fillStyle,
   backgroundTransparent: boolean,
-  height: number,
   proportion: number,
   ringBgColour: fillStyle,
   ringFgColour: fillStyle,
@@ -18,14 +17,12 @@ type Props = {
   showIntermediateProgress: boolean,
   segmented: boolean,
   steps: number,
-  width: number,
 };
 
 export class CanvasRenderer extends React.Component<Props> {
   static defaultProps = {
     backgroundColour: '#fff',
     backgroundTransparent: true,
-    height: 100,
     proportion: 0,
     ringBgColour: '#ccc',
     ringFgColour: '#3c763d',
@@ -34,7 +31,6 @@ export class CanvasRenderer extends React.Component<Props> {
     showIntermediateProgress: false,
     segmented: true,
     steps: 360,
-    width: 100,
   };
 
   ctx: CanvasRenderingContext2D;
@@ -42,24 +38,31 @@ export class CanvasRenderer extends React.Component<Props> {
   canvas: HTMLCanvasElement | null;
 
   componentDidMount = () => {
-    if (this.canvas) {
-      this.ctx = getCanvasContext(this.canvas);
-      this.draw();
+    if (this.canvas !== null) {
+      // Assign canvas to local variable to work around a flow refinement invalidation.
+      // https://flow.org/en/docs/lang/refinements/#toc-refinement-invalidations
+      const canvas = this.canvas;
+      this.ctx = getCanvasContext(canvas);
+      this.draw(canvas);
     }
   };
 
-  componentDidUpdate() {
-    if (this.canvas) {
-      this.draw();
+  componentDidUpdate = () => {
+    if (this.canvas !== null) {
+      this.draw(this.canvas);
     }
-  }
+  };
 
-  draw = () => {
-    const x = this.props.width * 0.5;
-    const y = this.props.height * 0.5;
+  draw = (canvasElement: HTMLCanvasElement) => {
+    const rect = canvasElement.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const x = width * 0.5;
+    const y = height * 0.5;
 
     const radius = radiusProportion => {
-      return (this.props.width / 2) * radiusProportion;
+      return (Math.min(width, height) / 2) * radiusProportion;
     };
 
     const step = Math.floor(this.props.steps * this.props.proportion);
@@ -69,7 +72,7 @@ export class CanvasRenderer extends React.Component<Props> {
     const stepDegree = (360 / this.props.steps) * step;
 
     // Clear the canvas
-    this.ctx.clearRect(0, 0, this.props.width, this.props.height);
+    this.ctx.clearRect(0, 0, width, height);
 
     // Draw the background circle
     drawSegment(this.ctx, x, y, radius(1), 0, 360);
@@ -128,8 +131,8 @@ export class CanvasRenderer extends React.Component<Props> {
       <canvas
         ref={ref => (this.canvas = ref)}
         style={{
-          width: this.props.width,
-          height: this.props.height,
+          width: '100%',
+          height: '100%',
         }}
       />
     );
