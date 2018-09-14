@@ -57,3 +57,9 @@ class MyComponent extends Component {
   }
 }
 ```
+
+See the `jsx` tab in [the storybook](https://twisty.github.io/react-radial-progress-indicator/) for more usage examples.
+
+## API
+
+A full list of `props` available to customise the component can be found here: [docs/api.md](docs/api.md)
