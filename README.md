@@ -42,21 +42,19 @@ npm install react-radial-progress-indicator
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React from 'react'
 import { RadialProgress } from 'react-radial-progress-indicator';
 
-class MyComponent extends Component {
-  render() {
-    return (
-      <RadialProgress
-        width={100}
-        height={100}
-        steps={10}
-        step={3}
-      />
-    )
-  }
-}
+const UsageExample = (props) => {
+  return (
+    <RadialProgress
+      width={100}
+      height={100}
+      steps={10}
+      step={3}
+    />
+  );
+);
 ```
 
 See the `jsx` tab in [the storybook](https://twisty.github.io/react-radial-progress-indicator/) for more usage examples.
