@@ -1,4 +1,4 @@
-[![Bundle size](https://img.shields.io/bundlephobia/min/react-radial-progress-indicator.svg)](https://bundlephobia.com/result?p=react-radial-progress-indicator)
+[![Bundle size](https://img.shields.io/bundlephobia/minzip/react-radial-progress-indicator.svg)](https://bundlephobia.com/result?p=react-radial-progress-indicator)
 [![GitHub issues](https://img.shields.io/github/issues/twisty/react-radial-progress-indicator.svg)](https://github.com/twisty/react-radial-progress-indicator/issues)
 [![GitHub license](https://img.shields.io/github/license/twisty/react-radial-progress-indicator.svg)](https://github.com/twisty/react-radial-progress-indicator/blob/master/LICENSE)
 
@@ -15,10 +15,10 @@ This component displays a circular progress gauge, useful for displaying progres
 
 ## Features
 
-* The graphic is drawn using HTML5 canvas.
-* Optimised to natively draw at the correct pixel density for the user's screen.
-* Tweakable props to set various colours and layout metrics.
-* Animatable between steps.
+* **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator)
+* **Responsive:** draws natively at the pixel density of your screen using HTML5 canvas.
+* **Tweakable:** colours, layout metrics, and text can be fine-tuned for your layout.
+* **Animatable:** animates between steps with customisable speed.
 
 ## Demo
 
