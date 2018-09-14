@@ -1,5 +1,6 @@
 [![Bundle size](https://img.shields.io/bundlephobia/minzip/react-radial-progress-indicator.svg)](https://bundlephobia.com/result?p=react-radial-progress-indicator)
 [![GitHub issues](https://img.shields.io/github/issues/twisty/react-radial-progress-indicator.svg)](https://github.com/twisty/react-radial-progress-indicator/issues)
+[![CodeFactor](https://www.codefactor.io/repository/github/twisty/react-radial-progress-indicator/badge)](https://www.codefactor.io/repository/github/twisty/react-radial-progress-indicator)
 [![GitHub license](https://img.shields.io/github/license/twisty/react-radial-progress-indicator.svg)](https://github.com/twisty/react-radial-progress-indicator/blob/master/LICENSE)
 
 # react-radial-progress-indicator
