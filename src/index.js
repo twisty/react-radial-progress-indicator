@@ -141,18 +141,16 @@ export class RadialProgress extends React.Component<Props, State> {
   };
 
   render() {
-    const debug = proportion => {
-      return (
-        <ul style={{ fontFamily: 'monospace' }}>
-          <li>startProportion: {startProportion}</li>
-          <li>endProportion: {endProportion}</li>
-          <li>getProportion(): {this.getProportion()}</li>
-          <li>proportion: {proportion}</li>
-          <li>props.duration: {this.props.duration}</li>
-          <li>getDuration(): {this.getDuration()}</li>
-        </ul>
-      );
-    };
+    const debug = (proportion: number) => (
+      <ul style={{ fontFamily: 'monospace' }}>
+        <li>startProportion: {startProportion}</li>
+        <li>endProportion: {endProportion}</li>
+        <li>getProportion(): {this.getProportion()}</li>
+        <li>proportion: {proportion}</li>
+        <li>props.duration: {this.props.duration}</li>
+        <li>getDuration(): {this.getDuration()}</li>
+      </ul>
+    );
     const label = (steps, proportion) => {
       if (this.graphic && this.graphic.canvas) {
         const rect = this.graphic.canvas.getBoundingClientRect();
