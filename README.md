@@ -5,18 +5,15 @@
 
 # react-radial-progress-indicator
 
-A React component that displays a customisable circular progress gauge.
+A React component that displays a customisable circular progress indicator.
 
-This component displays a circular progress gauge, useful for displaying progress on a completeable action, like:
-
-* “you’re on step 3/10”, or 
-* “you're 30% there”
+The indicator can display segmented steps (like “you’re on step 3/10”), or a smooth sweep to any position around the ring (useful when progress is measured as a percentage).
 
 <img alt="3/10" src="docs/example.png" width="100" height="100" />
 
 ## Features
 
-* **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator)
+* **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator).
 * **Responsive:** draws natively at the pixel density of your screen using HTML5 canvas.
 * **Tweakable:** colours, layout metrics, and text can be fine-tuned for your layout.
 * **Animatable:** animates between steps with customisable speed.
