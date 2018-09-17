@@ -1,20 +1,11 @@
 import React from 'react';
 import { storiesOf, setAddon } from '@storybook/react';
-import backgrounds from '@storybook/addon-backgrounds';
 import JSXAddon from 'storybook-addon-jsx';
 import { RadialProgress } from '../src';
 
 setAddon(JSXAddon);
 
-const myBackgrounds = backgrounds([
-  { name: 'white', value: '#fff', default: true },
-  { name: 'blue', value: '#ccf' },
-  { name: 'black', value: '#000' },
-]);
-
 const stories = storiesOf('RadialProgress', module);
-
-stories.addDecorator(myBackgrounds);
 
 stories.addDecorator(story => (
   <div style={{ textAlign: 'center', fontFamily: 'Helvetica, sans-serif' }}>
@@ -54,20 +45,6 @@ stories
       ringThickness={0.3}
     />
   ))
-  .addWithJSX('To 3/10, with colours', () => (
-    <RadialProgress
-      step={3}
-      steps={10}
-      width={200}
-      height={200}
-      ringBgColour="#EDCA8A"
-      ringFgColour="#674509"
-      ringIntermediateColour="#AA8239"
-      backgroundColour="#FFE0A9"
-      backgroundTransparent={false}
-      showIntermediateProgress={true}
-    />
-  ))
   .addWithJSX('From 3/10 to 5/10', () => (
     <RadialProgress
       startStep={3}
@@ -88,15 +65,43 @@ stories
       showIntermediateProgress={true}
     />
   ))
-  .addWithJSX('100 steps, no segment gaps', () => (
-    <RadialProgress
-      steps={100}
-      step={100}
-      width={200}
-      height={200}
-      segmented={false}
-    />
-  ))
+  .addWithJSX('Step or sweep', () => {
+    const steps = 20;
+    const float = jsx => <div style={{ float: 'left', margin: 10 }}>{jsx}</div>;
+    return (
+      <div>
+        {float(
+          <RadialProgress
+            steps={steps}
+            step={steps}
+            width={200}
+            height={200}
+            text={(steps, percentage) => Math.floor(steps * percentage)}
+            duration={10000}
+            ringFgColour="#666666"
+            ringIntermediateColour="#666666"
+            segmented={true}
+          />
+        )}
+        {float(
+          <RadialProgress
+            steps={steps}
+            step={steps}
+            width={200}
+            height={200}
+            segmented={false}
+            text={(steps, percentage) =>
+              (Math.floor(steps * percentage * 10) / 10).toFixed(1)
+            }
+            duration={10000}
+            ringFgColour="#666666"
+            ringIntermediateColour="#666666"
+            showIntermediateProgress={true}
+          />
+        )}
+      </div>
+    );
+  })
   .addWithJSX('5 steps, fast duration', () => (
     <RadialProgress
       steps={5}
@@ -192,4 +197,55 @@ stories
         </div>
       </div>
     );
+  })
+  .addWithJSX('Colours', () => {
+    const colours = [
+      {
+        ringBgColour: '#EDCA8A',
+        ringFgColour: '#674509',
+        ringIntermediateColour: '#AA8239',
+        backgroundColour: '#FFE0A9',
+        pageBackgroundColour: '#FFE0A9',
+      },
+      {
+        ringBgColour: '#ffffff',
+        ringFgColour: '#639A88',
+        ringIntermediateColour: '#91CC7A',
+        backgroundColour: '#eeeeee',
+        pageBackgroundColour: '#eeeeee',
+      },
+      {
+        ringBgColour: '#7C90A0',
+        ringFgColour: '#B5AA9D',
+        ringIntermediateColour: '#B9B7A7',
+        backgroundColour: '#747274',
+        pageBackgroundColour: '#747274',
+      },
+    ];
+    return colours.map(options => (
+      <div
+        style={{
+          float: 'left',
+          width: 100,
+          height: 100,
+          padding: 15,
+          margin: 5,
+          backgroundColor: options.pageBackgroundColour,
+        }}
+      >
+        <RadialProgress
+          step={10}
+          steps={10}
+          width="100%"
+          height="100%"
+          ringBgColour={options.ringBgColour}
+          ringFgColour={options.ringFgColour}
+          ringIntermediateColour={options.ringIntermediateColour}
+          backgroundColour={options.backgroundColour}
+          backgroundTransparent={false}
+          showIntermediateProgress={true}
+          segmented={false}
+        />
+      </div>
+    ));
   });
