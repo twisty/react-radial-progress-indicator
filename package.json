@@ -35,13 +35,14 @@
     "/dist"
   ],
   "scripts": {
-    "prepublishOnly": "yarn transpile && yarn generate-docs",
     "clean-dist": "rm -rf ./dist",
-    "transpile": "yarn run clean-dist && NODE_ENV=production babel ./src --out-dir ./dist",
-    "storybook-dev": "start-storybook -p 9001 -c .storybook",
-    "storybook-deploy": "storybook-to-ghpages",
+    "flow-coverage-report": "flow-coverage-report -i 'src/**/*.js'",
     "format": "prettier --single-quote --trailing-comma es5 \"{src,stories,.storybook}/**/*.js\" --write",
-    "generate-docs": "./generate-docs.sh"
+    "generate-docs": "./generate-docs.sh",
+    "prepublishOnly": "yarn transpile && yarn generate-docs",
+    "storybook-deploy": "storybook-to-ghpages",
+    "storybook-dev": "start-storybook -p 9001 -c .storybook",
+    "transpile": "yarn run clean-dist && NODE_ENV=production babel ./src --out-dir ./dist"
   },
   "devDependencies": {
     "@storybook/addon-backgrounds": "^3.4.10",
@@ -53,7 +54,8 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "flow-bin": "^0.80.0",
+    "flow-bin": "^0.81.0",
+    "flow-coverage-report": "^0.6.0",
     "prettier": "1.14.2",
     "react": "^16.4.2",
     "react-docgen": "^3.0.0-rc.1",
