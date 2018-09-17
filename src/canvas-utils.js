@@ -1,5 +1,7 @@
 // @flow
 
+type fillStyle = string | CanvasGradient | CanvasPattern;
+
 /**
  * Set up the properties of a canvas element.
  */
@@ -20,6 +22,10 @@ export const getCanvasContext = (
   return ctx;
 };
 
+export const degToRad = (degree: number) => {
+  return (Math.PI / 180) * (degree - 90);
+};
+
 /**
  * Draw a segment.
  */
@@ -30,11 +36,7 @@ export const drawSegment = (
   radius: number,
   startDegree: number,
   endDegree: number
-) => {
-  const degToRad = degree => {
-    return (Math.PI / 180) * (degree - 90);
-  };
-
+): void => {
   ctx.beginPath();
   ctx.moveTo(x, y);
 
@@ -42,4 +44,28 @@ export const drawSegment = (
   ctx.arc(x, y, radius, degToRad(startDegree), degToRad(endDegree), false);
 
   ctx.lineTo(x, y);
+};
+
+export const drawStrokeSegment = (
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  startDeg: number,
+  endDeg: number,
+  innerRadius: number,
+  outerRadius: number,
+  fill: fillStyle
+): void => {
+  const lineWidth = outerRadius - innerRadius;
+  ctx.beginPath();
+  ctx.strokeStyle = fill;
+  ctx.lineWidth = lineWidth;
+  ctx.arc(
+    x,
+    y,
+    outerRadius - lineWidth / 2,
+    degToRad(startDeg),
+    degToRad(endDeg)
+  );
+  ctx.stroke();
 };

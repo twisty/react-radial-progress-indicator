@@ -2,20 +2,37 @@
 
 import * as React from 'react';
 
-import { getCanvasContext, drawSegment } from '../canvas-utils';
+import {
+  getCanvasContext,
+  drawSegment,
+  drawStrokeSegment,
+  degToRad,
+} from '../canvas-utils';
 
 type fillStyle = string | CanvasGradient | CanvasPattern;
 
 type Props = {
+  /** The colour for the centre of the ring */
   backgroundColour: fillStyle,
+  /** Whether to display the centre of the ring as transparent */
   backgroundTransparent: boolean,
+  /** The proportion of progress */
   proportion: number,
+  /** The colour of the uncompleted steps of the ring */
   ringBgColour: fillStyle,
+  /** The colour of the completed steps of the ring */
   ringFgColour: fillStyle,
+  /** The colour of the 'intermediate' progress indicator that travels around the ring */
   ringIntermediateColour: fillStyle,
+  /** The thickness of the progress ring, expressed as a proportion (0.0 to 1.0) of the radius of the ring */
   ringThickness: number,
+  /** Whether to display the 'intermediate' progress bar */
   showIntermediateProgress: boolean,
+  /** Whether to show a gap between segments */
   segmented: boolean,
+  /** The width of the gap between segments, in degrees */
+  segmentGap: number,
+  /** The total number of steps to complete the ring */
   steps: number,
 };
 
@@ -30,6 +47,7 @@ export class CanvasRenderer extends React.Component<Props> {
     ringThickness: 0.2,
     showIntermediateProgress: false,
     segmented: true,
+    segmentGap: 2,
     steps: 360,
   };
 
@@ -54,76 +72,95 @@ export class CanvasRenderer extends React.Component<Props> {
   };
 
   draw = (canvasElement: HTMLCanvasElement) => {
+    const radius = radiusProportion => {
+      return (Math.min(width, height) / 2) * radiusProportion;
+    };
+
     const rect = canvasElement.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
 
     const x = width * 0.5;
     const y = height * 0.5;
-
-    const radius = radiusProportion => {
-      return (Math.min(width, height) / 2) * radiusProportion;
-    };
+    const lineWidth = radius(this.props.ringThickness);
+    const ringInner = radius(1 - this.props.ringThickness);
+    const ringOuter = radius(1);
 
     const step = Math.floor(this.props.steps * this.props.proportion);
-
-    // Set end degree of arc
-    const fineStepDegree = 360 * this.props.proportion;
-    const stepDegree = (360 / this.props.steps) * step;
 
     // Clear the canvas
     this.ctx.clearRect(0, 0, width, height);
 
     // Draw the background circle
-    drawSegment(this.ctx, x, y, radius(1), 0, 360);
-    this.ctx.fillStyle = this.props.ringBgColour;
-    this.ctx.fill();
-
-    // Draw the 'intermediate progress' ring
-    if (this.props.showIntermediateProgress === true) {
-      drawSegment(
-        this.ctx,
-        x,
-        y,
-        radius(1 /* - this.props.ringThickness / 2*/),
-        0,
-        fineStepDegree
-      );
-      this.ctx.fillStyle = this.props.ringIntermediateColour;
+    if (this.props.backgroundTransparent === false) {
+      drawSegment(this.ctx, x, y, ringOuter, 0, 360);
+      this.ctx.fillStyle = this.props.backgroundColour;
       this.ctx.fill();
     }
 
-    // Draw the main progress ring
-    drawSegment(this.ctx, x, y, radius(1), 0, stepDegree);
-    this.ctx.fillStyle = this.props.ringFgColour;
-    this.ctx.fill();
-
     if (this.props.segmented) {
-      if (this.props.backgroundTransparent) {
-        this.ctx.globalCompositeOperation = 'destination-out';
-      }
       for (let i = 0; i < this.props.steps; i++) {
-        const angle = (i / this.props.steps) * 360;
-        drawSegment(this.ctx, x, y, radius(1), angle - 1, angle + 1);
-        this.ctx.fillStyle = this.props.backgroundColour;
-        this.ctx.fill();
+        const startAngle = (i / this.props.steps) * 360;
+        const endAngle = ((i + 1) / this.props.steps) * 360;
+        const strokeStyle =
+          i < step ? this.props.ringFgColour : this.props.ringBgColour;
+        drawStrokeSegment(
+          this.ctx,
+          x,
+          y,
+          startAngle + this.props.segmentGap / 2,
+          endAngle - this.props.segmentGap / 2,
+          ringInner,
+          ringOuter,
+          strokeStyle
+        );
       }
-
-      this.ctx.globalCompositeOperation = 'source-over';
+    } else {
+      const endAngle = (step / this.props.steps) * 360;
+      drawStrokeSegment(
+        this.ctx,
+        x,
+        y,
+        0,
+        360,
+        ringInner,
+        ringOuter,
+        this.props.ringBgColour
+      );
+      drawStrokeSegment(
+        this.ctx,
+        x,
+        y,
+        0,
+        endAngle,
+        ringInner,
+        ringOuter,
+        this.props.ringFgColour
+      );
     }
 
-    /*
-     * Draw the foreground circle. If there is no foreground colour,
-     * make the shape transparent via composition effect.
-     */
-    if (this.props.backgroundTransparent) {
-      this.ctx.globalCompositeOperation = 'destination-out';
+    // Draw the 'intermediate progress' ring
+    if (this.props.showIntermediateProgress === true) {
+      let total = 360;
+      let segmentOffset = 0;
+      if (this.props.segmented === true) {
+        total = 360 - this.props.steps * this.props.segmentGap;
+        segmentOffset =
+          step * this.props.segmentGap + this.props.segmentGap / 2;
+      }
+      const startAngle = (step / this.props.steps) * total;
+      const endAngle = total * this.props.proportion;
+      drawStrokeSegment(
+        this.ctx,
+        x,
+        y,
+        startAngle + segmentOffset,
+        endAngle + segmentOffset,
+        ringInner,
+        ringOuter,
+        this.props.ringIntermediateColour
+      );
     }
-    drawSegment(this.ctx, x, y, radius(1 - this.props.ringThickness), 0, 360);
-    this.ctx.fillStyle = this.props.backgroundColour;
-    this.ctx.fill();
-
-    this.ctx.globalCompositeOperation = 'source-over';
   };
 
   render() {
