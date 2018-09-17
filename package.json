@@ -1,5 +1,6 @@
 {
   "name": "react-radial-progress-indicator",
+  "description": "A react component that displays a customisable circular progress bar.",
   "version": "1.3.0",
   "main": "dist/index.js",
   "author": "Tim Brayshaw <tim@brayshaw.com>",
