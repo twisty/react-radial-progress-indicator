@@ -13,7 +13,7 @@ The indicator can display segmented steps (like “you’re on step 3/10”), or
 
 ## Features
 
-* **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator).
+* **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator). No runtime dependencies.
 * **Responsive:** draws natively at the pixel density of your screen using HTML5 canvas.
 * **Tweakable:** colours, layout metrics, and text can be fine-tuned for your layout.
 * **Animatable:** animates between steps with customisable speed.
