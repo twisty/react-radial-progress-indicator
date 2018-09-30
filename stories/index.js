@@ -199,8 +199,9 @@ stories
     );
   })
   .addWithJSX('Colours', () => {
-    const colours = [
+    const schemes = [
       {
+        name: 'option-1',
         ringBgColour: '#EDCA8A',
         ringFgColour: '#674509',
         ringIntermediateColour: '#AA8239',
@@ -208,6 +209,7 @@ stories
         pageBackgroundColour: '#FFE0A9',
       },
       {
+        name: 'option-2',
         ringBgColour: '#ffffff',
         ringFgColour: '#639A88',
         ringIntermediateColour: '#91CC7A',
@@ -215,6 +217,7 @@ stories
         pageBackgroundColour: '#eeeeee',
       },
       {
+        name: 'option-3',
         ringBgColour: '#7C90A0',
         ringFgColour: '#B5AA9D',
         ringIntermediateColour: '#B9B7A7',
@@ -222,15 +225,16 @@ stories
         pageBackgroundColour: '#747274',
       },
     ];
-    return colours.map(options => (
+    return schemes.map(scheme => (
       <div
+        key={scheme.name}
         style={{
           float: 'left',
           width: 100,
           height: 100,
           padding: 15,
           margin: 5,
-          backgroundColor: options.pageBackgroundColour,
+          backgroundColor: scheme.pageBackgroundColour,
         }}
       >
         <RadialProgress
@@ -238,10 +242,10 @@ stories
           steps={10}
           width="100%"
           height="100%"
-          ringBgColour={options.ringBgColour}
-          ringFgColour={options.ringFgColour}
-          ringIntermediateColour={options.ringIntermediateColour}
-          backgroundColour={options.backgroundColour}
+          ringBgColour={scheme.ringBgColour}
+          ringFgColour={scheme.ringFgColour}
+          ringIntermediateColour={scheme.ringIntermediateColour}
+          backgroundColour={scheme.backgroundColour}
           backgroundTransparent={false}
           showIntermediateProgress={true}
           segmented={false}
