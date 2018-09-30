@@ -71,16 +71,28 @@ export class RadialProgress extends React.Component<Props, State> {
     proportion: null,
   };
 
+  _isMounted = false;
+
+  get isMounted() {
+    return this._isMounted;
+  }
+
+  set isMounted(value) {
+    this._isMounted = value;
+  }
+
   raf: (() => void) => number;
 
   graphic: ?CanvasRenderer;
 
   componentDidMount = () => {
+    this.isMounted = true;
     this.raf = window.requestAnimationFrame.bind(window);
     this.startAnimating();
   };
 
   componentWillUnmount() {
+    this.isMounted = false;
     this.cancelAnimating();
   }
 
@@ -124,6 +136,9 @@ export class RadialProgress extends React.Component<Props, State> {
   };
 
   animate = () => {
+    if (!this.isMounted) {
+      return;
+    }
     const proportion = this.getProportion();
 
     this.setState({
