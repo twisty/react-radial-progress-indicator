@@ -1,8 +1,8 @@
 import { configure } from '@storybook/react';
 
 function loadStories() {
-  require('../stories/index.js');
-  require('../stories/canvas-renderer.js');
+  require('../stories/radial-progress');
+  require('../stories/canvas-renderer');
 }
 
 configure(loadStories, module);
