@@ -77,7 +77,7 @@ export class RadialProgress extends React.Component<Props, State> {
     return this._isMounted;
   }
 
-  set isMounted(value) {
+  set isMounted(value: boolean) {
     this._isMounted = value;
   }
 
