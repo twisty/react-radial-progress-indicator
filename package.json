@@ -59,7 +59,6 @@
     "@storybook/storybook-deployer": "^2.3.0",
     "babel-loader": "^8.0.6",
     "flow-bin": "^0.106.0",
-    "flow-coverage-report": "^0.6.0",
     "prettier": "1.18.2",
     "react": "^16.4.2",
     "react-docgen": "^4.1.1",
