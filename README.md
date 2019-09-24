@@ -9,18 +9,12 @@ A React component that displays a customisable circular progress indicator.
 
 The indicator can display segmented steps (like “you’re on step 3/10”), or a smooth sweep to any position around the ring (useful when progress is measured as a percentage).
 
-<img alt="3/10" src="docs/example.png" width="100" height="100" />
-
 ## Features
 
 * **Lightweight:** [~2kb when minified and gzipped](https://bundlephobia.com/result?p=react-radial-progress-indicator). No runtime dependencies.
 * **Responsive:** draws natively at the pixel density of your screen using HTML5 canvas.
 * **Tweakable:** colours, layout metrics, and text can be fine-tuned for your layout.
 * **Animatable:** animates between steps with customisable speed.
-
-## Demo
-
-* Have a look at [this storybook](https://twisty.github.io/react-radial-progress-indicator/).
 
 ## Install
 
@@ -35,6 +29,12 @@ yarn add react-radial-progress-indicator
 ```
 npm install react-radial-progress-indicator
 ```
+
+## Examples
+
+<img alt="Animated example" src="docs/example.gif" width="408" height="130" />
+
+For examples and usage, have a look at [this storybook](https://twisty.github.io/react-radial-progress-indicator/).
 
 ## Usage
 
