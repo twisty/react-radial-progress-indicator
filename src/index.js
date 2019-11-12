@@ -34,6 +34,8 @@ type Props = {
   showIntermediateProgress: boolean,
   /** Whether to segment the steps by displaying a gap between them */
   segmented: boolean,
+  /** The number the radius is divided by to set the font size */
+  fontRatio: number,
   /** A function that returns the content that is displayed in the centre of the ring */
   text: (steps: number, proportion: number) => React.Node,
 };
@@ -59,6 +61,7 @@ export class RadialProgress extends React.Component<Props, State> {
     backgroundTransparent: true,
     showIntermediateProgress: false,
     segmented: true,
+    fontRatio: 4,
     text: (steps: number, proportion: number) => {
       const step = Math.floor(steps * proportion);
       return `${step}/${steps}`;
@@ -174,7 +177,7 @@ export class RadialProgress extends React.Component<Props, State> {
           position: 'absolute',
           textAlign: 'center',
           color: this.props.ringFgColour,
-          fontSize: `${diameter / 4}px`,
+          fontSize: `${diameter / fontRatio}px`,
         };
         return (
           <div className="RadialProgressIndicator__label" style={style}>
