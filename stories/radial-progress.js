@@ -138,7 +138,7 @@ stories
       step={5}
       width={200}
       height={200}
-      fontRatio={9}
+      fontRatio={8}
       showIntermediateProgress={true}
       text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
     />
