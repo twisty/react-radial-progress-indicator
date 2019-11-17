@@ -177,7 +177,7 @@ export class RadialProgress extends React.Component<Props, State> {
           position: 'absolute',
           textAlign: 'center',
           color: this.props.ringFgColour,
-          fontSize: `${diameter / fontRatio}px`,
+          fontSize: `${diameter / this.props.fontRatio}px`,
         };
         return (
           <div className="RadialProgressIndicator__label" style={style}>

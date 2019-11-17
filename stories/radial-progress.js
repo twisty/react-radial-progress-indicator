@@ -132,6 +132,17 @@ stories
       text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
     />
   ))
+  .add('Custom font ratio', () => (
+    <RadialProgress
+      steps={5}
+      step={5}
+      width={200}
+      height={200}
+      fontRatio={8}
+      showIntermediateProgress={true}
+      text={(steps, proportion) => `${Math.floor(proportion * 100)}%`}
+    />
+  ))
   .add('Small, with custom text', () => (
     <div style={{ fontWeight: 'bold' }}>
       <RadialProgress
