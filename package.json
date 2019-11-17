@@ -52,10 +52,10 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.5",
-    "@storybook/addon-backgrounds": "^5.1.11",
-    "@storybook/addon-knobs": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
+    "@storybook/addon-backgrounds": "^5.2.6",
+    "@storybook/addon-knobs": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
     "@storybook/storybook-deployer": "^2.3.0",
     "babel-loader": "^8.0.6",
     "flow-bin": "^0.106.0",
@@ -64,7 +64,7 @@
     "react-docgen": "^4.1.1",
     "react-docs-markdown": "^0.8.0",
     "react-dom": "^16.4.2",
-    "storybook-addon-jsx": "^7.1.5"
+    "storybook-addon-jsx": "^7.1.13"
   },
   "peerDependencies": {
     "react": ">=16.4",
