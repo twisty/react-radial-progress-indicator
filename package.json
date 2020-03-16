@@ -59,7 +59,7 @@
     "@storybook/storybook-deployer": "^2.3.0",
     "babel-loader": "^8.0.6",
     "flow-bin": "^0.106.0",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "react": "^16.4.2",
     "react-docgen": "^4.1.1",
     "react-docs-markdown": "^0.8.0",
